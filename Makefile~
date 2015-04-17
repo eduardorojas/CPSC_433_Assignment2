@@ -1,0 +1,18 @@
+all:	cipher RSA_specific
+
+cipher:	cipher.o DES.o RSA.o
+	g++ cipher.o DES.o RSA.o -o cipher -lcrypto
+
+
+cipher.o:	cipher.cpp
+	g++ -g -c cipher.cpp 
+
+DES.o:	DES.cpp DES.h
+	g++ -g -c DES.cpp
+
+RSA.o:	RSA.cpp RSA.h
+	g++ -g -c RSA.cpp
+
+
+clean:
+	rm -rf *.o cipher RSA_specific
